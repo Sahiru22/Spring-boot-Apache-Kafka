@@ -1,9 +1,9 @@
-package com.example.inventory_service.dto;
+package com.example.inventory_service.controller.request;
 
 import lombok.Data;
 
 @Data
-public class InventoryDTO {
+public class InventoryRequest {
 
   private Long id;
   private Long itemId;
