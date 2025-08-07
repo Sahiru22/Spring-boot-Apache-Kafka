@@ -1,6 +1,6 @@
-package com.example.inventory_service.controller.kafka;
+package com.example.product_service.consumer;
 
-import com.example.Spring_boot_order_service.dto.OrderEventDTO;
+import com.example.product_service.dto.OrderEventDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderConsumer {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(OrderEventDTO.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(OrderConsumer.class);
 
   @KafkaListener(
       topics = "${spring.kafka.template.default-topic}",
@@ -20,3 +20,4 @@ public class OrderConsumer {
     LOGGER.info("Receiving order event from the topic: {}", orderEventDTO);
   }
 }
+
