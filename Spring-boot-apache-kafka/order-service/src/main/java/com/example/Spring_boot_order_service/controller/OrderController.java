@@ -1,5 +1,6 @@
 package com.example.Spring_boot_order_service.controller;
 
+import com.example.Spring_boot_order_service.controller.request.OrderRequest;
 import com.example.Spring_boot_order_service.dto.OrderDTO;
 import com.example.Spring_boot_order_service.dto.OrderEventDTO;
 import com.example.Spring_boot_order_service.model.Order;
@@ -28,19 +29,24 @@ public class OrderController {
   }
 
   @GetMapping("/{id}")
-  public OrderDTO getOrderById(@PathVariable Integer id) {
+  public OrderDTO getOrderById(@PathVariable Long id) {
     return orderService.getOrderById(id);
   }
 
   @PostMapping("")
-  public OrderDTO saveOrder(@RequestBody OrderDTO orderDTO) {
-    Order savedOrder = orderService.saveOrder(orderDTO);
+  public OrderDTO saveOrder(@RequestBody OrderRequest request) {
+    Order savedOrder = orderService.saveOrder(request);
 
     OrderEventDTO orderEventDTO = new OrderEventDTO();
     orderEventDTO.setMessage("Order Created with ID: " + savedOrder.getId());
     orderEventDTO.setStatus("PENDING");
     orderProducer.sendMessage(orderEventDTO);
+    return mapOrderToOrderDTO(savedOrder);
+  }
 
-    return orderDTO;
+  private OrderDTO mapOrderToOrderDTO(Order order) {
+    OrderDTO dto = new OrderDTO();
+    dto.setId(order.getId());
+    return dto;
   }
 }

@@ -1,5 +1,6 @@
 package com.example.Spring_boot_order_service.service.impl;
 
+import com.example.Spring_boot_order_service.controller.request.OrderRequest;
 import com.example.Spring_boot_order_service.dto.OrderDTO;
 import com.example.Spring_boot_order_service.model.Order;
 import com.example.Spring_boot_order_service.repository.OrderRepository;
@@ -23,18 +24,18 @@ public class OrderServiceImpl implements OrderService {
   }
 
   @Override
-  public OrderDTO getOrderById(Integer id) {
-    return orderRepository.findById(Long.valueOf(id))
+  public OrderDTO getOrderById(Long id) {
+    return orderRepository.findById(id)
         .map(this::toDTO)
         .orElse(null);
   }
 
   @Override
-  public Order saveOrder(OrderDTO dto) {
+  public Order saveOrder(OrderRequest request) {
     Order order = new Order();
-    order.setId(dto.getId());
-    order.setOrderDate(dto.getOrderDate());
-    order.setAmount(dto.getAmount());
+    order.setId(request.getId());
+    order.setOrderDate(request.getOrderDate());
+    order.setAmount(request.getAmount());
 
     return orderRepository.save(order);
   }
