@@ -47,6 +47,8 @@ public class OrderController {
   private OrderDTO mapOrderToOrderDTO(Order order) {
     OrderDTO dto = new OrderDTO();
     dto.setId(order.getId());
+    dto.setOrderDate(order.getOrderDate());
+    dto.setAmount(order.getAmount());
     return dto;
   }
 }
