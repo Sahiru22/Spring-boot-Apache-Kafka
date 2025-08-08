@@ -1,4 +1,4 @@
-package com.example.Spring_boot_order_service.dto;
+package com.example.common.dto;
 
 import lombok.Data;
 

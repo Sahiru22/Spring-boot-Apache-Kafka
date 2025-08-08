@@ -1,6 +1,6 @@
 package com.example.inventory_service.consumer;
 
-import com.example.inventory_service.dto.OrderEventDTO;
+import com.example.common.dto.OrderEventDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -13,11 +13,9 @@ public class OrderConsumer {
 
   @KafkaListener(
       topics = "${spring.kafka.template.default-topic}",
-      groupId = "spring.kafka.consumer.group-id"
+      groupId = "${spring.kafka.consumer.group-id}"
   )
-
   public void consume(OrderEventDTO orderEventDTO) {
     LOGGER.info("Receiving order event from the topic: {}", orderEventDTO);
   }
-
 }

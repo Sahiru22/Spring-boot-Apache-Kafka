@@ -1,6 +1,6 @@
 package com.example.Spring_boot_order_service.producer;
 
-import com.example.Spring_boot_order_service.dto.OrderEventDTO;
+import com.example.common.dto.OrderEventDTO;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

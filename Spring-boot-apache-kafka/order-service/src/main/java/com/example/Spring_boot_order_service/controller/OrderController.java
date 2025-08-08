@@ -2,10 +2,10 @@ package com.example.Spring_boot_order_service.controller;
 
 import com.example.Spring_boot_order_service.controller.request.OrderRequest;
 import com.example.Spring_boot_order_service.dto.OrderDTO;
-import com.example.Spring_boot_order_service.dto.OrderEventDTO;
 import com.example.Spring_boot_order_service.model.Order;
 import com.example.Spring_boot_order_service.producer.OrderProducer;
 import com.example.Spring_boot_order_service.service.OrderService;
+import com.example.common.dto.OrderEventDTO;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
